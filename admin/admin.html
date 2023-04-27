@@ -1,0 +1,131 @@
+<link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap5.min.css" />
+<script type="text/javascript" src="./js/datatables.min.js"></script>
+<script type="text/javascript" src="./js/dataTables.bootstrap5.min.js"></script>
+
+<nav>
+    <div class="nav nav-tabs" role="tablist">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#a1" type="button" role="tab" aria-selected="true" _="Module overview"></button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#a2" type="button" role="tab" aria-selected="false" _="Convert log"></button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#a3" type="button" role="tab" aria-selected="false" _="API testing"></button>
+    </div>
+</nav>
+<div class="tab-content">
+    <!-- Module overview -->
+    <div id="a1" class="active tab-pane mt-3">
+        <strong _="API Server address"></strong> :
+        <ul>
+            <li id="tbl2scURI"></li>
+        </ul>
+        <strong _="Usage"></strong> :
+        <ol>
+            <li _="Use Javascript to obtain more than one HTML table in a web page and treat it as text content. The content can also contain other types of HTML tags."></li>
+            <li _="Use the HTTP POST method to send the text to the API server address as the form content."></li>
+            <li _="The form has three fields:"></li>
+            <ul>
+                <li>title - <span _="Title (optional), used for records, blank is not recommended."></span></li>
+                <li>format - <span _='Conversion format (optional), the default is "ods", you can also specify "xls", "xlsx" or "pdf".'></span></li>
+                <li>content - <span _="Table content (required field)."></span></li>
+            </ul>
+        </ol>
+        <strong _="Form example"></strong> :
+        <pre><code id="formExample" class="d-none">
+<form method="POST" action="" id="demoForm">
+    <input type="hidden" name="title" value="Convert demo">
+    <input type="hidden" name="format" value="ods">
+    <textarea name="content"></textarea>
+    <input type="submit" value="Download as ODF">
+</form>
+        </code></pre>
+    </div>
+
+    <!-- Log -->
+    <div id="a2" class="tab-pane mt-3">
+        <button id="refreshLog" class="btn btn-outline-primary btn-sm float-end" _="Refresh log"></button>
+        <table id="logging_table" class="table table-light table-sm table-striped table-bordered table-hover mt-1" style="width:100%">
+            <thead>
+                <tr>
+                    <th _="State"></th>
+                    <th _="Date"></th>
+                    <th _="Source IP"></th>
+                    <th _="Time consuming"></th>
+                    <th _="Title"></th>
+                    <th _="Message"></th>
+                </tr>
+            </thead>
+            <tbody id="logging_content">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- API 測試 -->
+    <div id="a3" class="tab-pane mt-3" style="width: 50%;">
+        <div class="fluid-container">
+            <h3>HTML Table</h3>
+            <table id="tableDemo" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Number of Sales</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Jan</th>
+                        <td>105</td>
+                        <td>$15,000.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Feb</th>
+                        <td>95</td>
+                        <td>$12,000.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mar</th>
+                        <td>150</td>
+                        <td>$20,000.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Apr</th>
+                        <td>50</td>
+                        <td>$30,000.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">May</th>
+                        <td>80</td>
+                        <td>$15,000.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Jun</th>
+                        <td>110</td>
+                        <td>$22,000.00</td>
+                    </tr>
+                    <tr id="endtable">
+                        <th colspan="2" scope="row">Grand Total</th>
+                        <td>$114,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function getTableContent(format) {
+                    var tableDemo = document.getElementById("tableDemo");
+                    var tableFormat = document.getElementById("tableFormat");
+                    var tableContent = document.getElementById("tableContent");
+                    tableFormat.value = format;
+                    tableContent.value = tableDemo.outerHTML;
+                    document.forms['convertDemo'].submit();
+                }
+            </script>
+            <form id="convertDemo" name="convertDemo" method="POST" action="">
+                <input type="hidden" name="title" value="Table2SC">
+                <input type="hidden" id="tableFormat" name="format" value="ods">
+                <input type="hidden" id="tableContent" name="content" value="">
+            </form>
+            <div class="input-group">
+                <button type="button" class="btn btn-outline-primary btn-sm" _="Download as ODF"  onclick="getTableContent('ods')"></button>
+                <button type="button" class="btn btn-outline-primary btn-sm" _="Download as XLSX" onclick="getTableContent('xlsx')"></button>
+                <button type="button" class="btn btn-outline-primary btn-sm" _="Download as PDF"  onclick="getTableContent('pdf')"></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{
+	"API Server address": "API 伺服器位址",
+	"API testing": "API 測試",
+	"Form example": "表單範例",
+	"Convert log": "轉檔紀錄",
+	"Module overview": "模組概覽",
+	"Table conversion spreadsheet.": "表格轉電子試算表",
+	"Usage": "使用方法",
+	"Use Javascript to obtain more than one HTML table in a web page and treat it as text content. The content can also contain other types of HTML tags.":
+	"利用 Javascript 取得網頁內一個以上的 HTML 表格，當成文字內容，內容中亦可含有其他類型的 HTML 標籤。",
+	"Use the HTTP POST method to send the text to the API server address as the form content.":
+	"將該文字當成表單內容，利用 HTTP POST 方法，送至 API 伺服器位址。",
+	"The form has three fields:":
+	"表單有三個欄位：",
+	"Title (optional), used for records, blank is not recommended.":
+	"標題(可選)，用作紀錄用，不建議空白。",
+	"Conversion format (optional), the default is \"ods\", you can also specify \"xls\", \"xlsx\" or \"pdf\".":
+	"轉換格式(可選)，預設爲 \"ods\"，亦可指定 \"xls\"、\"xlsx\" 或 \"pdf\"。",
+	"Table content (required field).": "表格內容(必要欄位)。",
+	"State": "狀態",
+	"Source IP": "來源 IP",
+	"Title": "標題",
+	"Refresh log": "重新整理",
+	"Download as ODF": "下載 ODF 格式",
+	"Download as XLSX": "下載 Excel 格式",
+	"Download as PDF": "下載 PDF",
+	"Success": "成功",
+	"Fail": "失敗",
+	"Time consuming": "費時",
+	"Message": "訊息"
+}
