@@ -1,0 +1,12 @@
+Source: oxool-module-table2sc
+Section: web
+Priority: optional
+Maintainer: OSSII R&D Team. <https://www.ossii.com.tw/>
+Build-Depends: oxool-dev (>= 4.0.0)
+Standards-Version: 3.9.7
+
+Package: oxool-module-table2sc
+Section: web
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, oxool (>= 4.0.0)
+Description: This service provides conversion of HTML Table content into spreadsheet or PDF format.

@@ -1,0 +1,35 @@
+<config>
+	<module enable="true" type="bool">
+		<load>@MODULE_NAME@.so</load>
+		<detail>
+			<name>@MODULE_NAME@</name>
+			<serviceURI>/lool/tbl2sc</serviceURI>
+			<summary>Convert HTML Table to Spreadsheet or PDF.</summary>
+			<author>OSSII R&amp;D Team. &lt;https://www.ossii.com.tw/&gt;</author>
+			<license>MPLv2.0</license>
+			<description>This service provides conversion of HTML Table content into spreadsheet or PDF format.</description>
+			<adminPrivilege default="false" desc="Requires admin authentication." type="bool">false</adminPrivilege>
+			<adminIcon desc="Please refer to https://icons.getbootstrap.com/ for icon names.">table</adminIcon>
+			<adminItem>Table conversion spreadsheet.</adminItem>
+		</detail>
+	</module>
+	<!-- If you want to have the module's own log, please enable logggin enable="true". -->
+	<logging enable="false">
+		<name>@PACKAGE_TARNAME@</name>
+		<level default="trace" desc="Can be 0-8, or none (turns off logging), fatal, critical, error, warning, notice, information, debug, trace">information</level>
+		<file enable="true">
+			<property desc="Log file path." name="path">/var/log/@PACKAGE_TARNAME@.log</property>
+			<property desc="Log file rotation strategy. See Poco FileChannel." name="rotation">monthly</property>
+			<property desc="Append either timestamp or number to the archived log filename." name="archive">timestamp</property>
+			<property desc="Specifies whether times for rotation are treated as local or UTC. Valid values are local and utc." name="times">local</property>
+			<property desc="Enable/disable log file compression." name="compress">true</property>
+			<property desc="The maximum age of log files to preserve. See Poco FileChannel." name="purgeAge">10 days</property>
+			<property desc="The maximum number of log archives to preserve. Use 'none' to disable purging. See Poco FileChannel." name="purgeCount">4</property>
+			<property desc="Enable/disable log file rotation on opening." name="rotateOnOpen">true</property>
+			<property desc="Enable/disable flushing after logging each line. May harm performance. Note that without flushing after each line, the log lines from the different processes will not appear in chronological order." name="flush">false</property>
+		</file>
+		<syslog enable="false"/>
+		<!-- If neither file nor syslog logging is enabled, console output will be used. -->
+		<color type="bool">true</color>
+	</logging>
+</config>
