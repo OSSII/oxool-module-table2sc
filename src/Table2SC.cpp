@@ -215,15 +215,9 @@ private:
             std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
         std::string cost = std::to_string(timeSinceStartMs) + " ms.";
         // 來源 IP
-        std::size_t pos = socket->clientAddress().rfind(":");
-        std::string sourceIP =
-            (pos != std::string::npos ? socket->clientAddress().substr(pos + 1) : socket->clientAddress());
-
-        if (sourceIP == "1")
-            sourceIP = "localhost";
+        std::string sourceIP = socket->clientAddress();
 
         auto session = getDataSession();
-
         session << "INSERT INTO logging (status, source_ip, title, cost, msg) "
                 << "VALUES(?, ?, ?, ?, ?)",
                 use(success), use(sourceIP), use(title), use(cost), use(msg), now;
